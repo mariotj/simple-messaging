@@ -17,6 +17,7 @@
 
   <properties>
     <java.version>1.8</java.version>
+    <springfox.version>3.0.0-SNAPSHOT</springfox.version>
   </properties>
 
   <dependencies>
@@ -68,6 +69,23 @@
       <artifactId>spring-restdocs-webtestclient</artifactId>
       <scope>test</scope>
     </dependency>
+
+    <!-- Swagger dependencies libraries-->
+    <dependency>
+      <groupId>io.springfox</groupId>
+      <artifactId>springfox-swagger2</artifactId>
+      <version>${springfox.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.springfox</groupId>
+      <artifactId>springfox-spring-webflux</artifactId>
+      <version>${springfox.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.springfox</groupId>
+      <artifactId>springfox-swagger-ui</artifactId>
+      <version>${springfox.version}</version>
+    </dependency>
   </dependencies>
 
   <build>
@@ -100,6 +118,20 @@
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifest>
+              <mainClass>com.simple.messaging.simplemessaging.Main</mainClass>
+              <addDefaultImplementationEntries>
+                true
+              </addDefaultImplementationEntries>
+            </manifest>
+          </archive>
+        </configuration>
       </plugin>
     </plugins>
   </build>
