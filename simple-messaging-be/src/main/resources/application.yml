@@ -1,0 +1,8 @@
+server:
+  port: 8899
+  http2:
+    enabled: true
+management:
+  endpoints:
+    web:
+      base-path: /application
