@@ -1,0 +1,87 @@
+<configuration scan="true">
+  <appender class="ch.qos.logback.core.ConsoleAppender" name="STDOUT">
+    <encoder>
+      <pattern>[%level] [%date{YYYY-MM-dd HH:mm:ss:SSS}] [%thread] [%logger{10}:%line] : %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <appender class="ch.qos.logback.core.rolling.RollingFileAppender" name="SPRING">
+    <file>${LOG_PATH}-spring.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <!--rollover daily-->
+      <fileNamePattern>${LOG_PATH}.%d{yyyy-MM-dd}.%i-spring.log</fileNamePattern>
+      <timeBasedFileNamingAndTriggeringPolicy
+        class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+        <!-- or whenever the file size reaches 400MB -->
+        <maxFileSize>400MB</maxFileSize>
+      </timeBasedFileNamingAndTriggeringPolicy>
+    </rollingPolicy>
+    <encoder>
+      <pattern>[%level] [%date{YYYY-MM-dd HH:mm:ss:SSS}] [%thread] [%logger{10}:%line] : %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <appender class="ch.qos.logback.core.rolling.RollingFileAppender" name="APP">
+    <file>${LOG_PATH}-app.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <!--rollover daily-->
+      <fileNamePattern>${LOG_PATH}.%d{yyyy-MM-dd}.%i-app.log</fileNamePattern>
+      <timeBasedFileNamingAndTriggeringPolicy
+        class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+        <!-- or whenever the file size reaches 400MB -->
+        <maxFileSize>400MB</maxFileSize>
+      </timeBasedFileNamingAndTriggeringPolicy>
+    </rollingPolicy>
+    <encoder>
+      <pattern>[%level] [%date{YYYY-MM-dd HH:mm:ss:SSS}] [%thread] [%logger{10}:%line] : %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <appender class="ch.qos.logback.core.rolling.RollingFileAppender" name="SERVICE_IMPL">
+    <file>${LOG_PATH}-service-impl.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <!--rollover daily-->
+      <fileNamePattern>${LOG_PATH}.%d{yyyy-MM-dd}.%i-service-impl.log</fileNamePattern>
+      <timeBasedFileNamingAndTriggeringPolicy
+        class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+        <!-- or whenever the file size reaches 400MB -->
+        <maxFileSize>400MB</maxFileSize>
+      </timeBasedFileNamingAndTriggeringPolicy>
+    </rollingPolicy>
+    <encoder>
+      <pattern>[%level] [%date{YYYY-MM-dd HH:mm:ss:SSS}] [%thread] [%logger{10}:%line] : %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <appender class="ch.qos.logback.core.rolling.RollingFileAppender" name="REST_WEB">
+    <file>${LOG_PATH}-rest-web.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <!--rollover daily-->
+      <fileNamePattern>${LOG_PATH}.%d{yyyy-MM-dd}.%i-rest-web.log</fileNamePattern>
+      <timeBasedFileNamingAndTriggeringPolicy
+        class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+        <!-- or whenever the file size reaches 400MB -->
+        <maxFileSize>400MB</maxFileSize>
+      </timeBasedFileNamingAndTriggeringPolicy>
+    </rollingPolicy>
+    <encoder>
+      <pattern>[%level] [%date{YYYY-MM-dd HH:mm:ss:SSS}] [%thread] [%logger{10}:%line] : %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <root level="INFO">
+    <appender-ref ref="APP"/>
+  </root>
+
+  <logger additivity="false" level="INFO" name="org.springframework">
+    <appender-ref ref="SPRING"/>
+  </logger>
+
+  <logger additivity="false" level="DEBUG" name="com.tiket.tix.car.rental.customer.searching.service.impl">
+    <appender-ref ref="SERVICE_IMPL"/>
+  </logger>
+
+  <logger additivity="false" level="DEBUG" name="com.tiket.tix.car.rental.customer.searching.rest.web">
+    <appender-ref ref="REST_WEB"/>
+  </logger>
+</configuration>
