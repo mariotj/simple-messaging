@@ -27,11 +27,6 @@ public class MessagingServiceImpl implements MessagingService {
 
   @Override
   public Mono<List<MessageData>> collect() {
-    return Mono.just(messageData)
-        .map(r -> {
-          List<MessageData> response = new ArrayList<>(r);
-          messageData = new ArrayList<>();
-          return response;
-        });
+    return Mono.just(messageData);
   }
 }
