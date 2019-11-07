@@ -10,6 +10,7 @@ import com.simple.messaging.simplemessaging.service.api.MessagingService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,9 +31,16 @@ public class MessagingController {
 
   private MessagingService messagingService;
 
+  private SimpMessagingTemplate template;
+
   @Autowired
   public void setMessagingService(MessagingService messagingService) {
     this.messagingService = messagingService;
+  }
+
+  @Autowired
+  public void setTemplate(SimpMessagingTemplate template) {
+    this.template = template;
   }
 
   @PostMapping
@@ -44,6 +52,7 @@ public class MessagingController {
             response,
             null
         ))
+        .map(this::sendToBroker)
     ).subscribeOn(Schedulers.elastic());
   }
 
@@ -57,5 +66,10 @@ public class MessagingController {
             null
         ))
     ).subscribeOn(Schedulers.elastic());
+  }
+
+  private <T> BaseResponse<T> sendToBroker(BaseResponse<T> response) {
+    template.convertAndSend("/topic/message", response);
+    return response;
   }
 }
