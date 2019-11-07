@@ -1,7 +1,10 @@
-# simple-messaging-be
+# Simple Messaging
 
 Technologies:
  * Spring Boot 2 (Using <b>spring-boot-starter-webflux</b>, <b>spring-boot-starter-websocket</b>)
+
+Dependencies:
+ * Java 8 (required)
  
 ## Install using default profile
 ```
