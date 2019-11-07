@@ -23,7 +23,7 @@ java -jar target/simple-messaging-<version>.jar
 ```
 
 # API Documentation
-There are 3 API in this project, 2 REST API and 1 Websocket endpoint.
+There are 3 API in this project, 2 REST API (also can be accessed from swagger - ```http://localhost:8899/swagger-ui.html```) and 1 Websocket endpoint.
 
 ## 1. Submit Message API
   Endpoint for submit message with method ```POST```
