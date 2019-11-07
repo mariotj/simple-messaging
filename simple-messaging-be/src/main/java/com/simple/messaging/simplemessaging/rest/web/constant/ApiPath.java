@@ -10,6 +10,7 @@ public class ApiPath {
 
   // Message
   public static final String MESSAGES = BASE_PATH_V1 + "/messages";
+  public static final String COLLECT = "/collect";
 
   private ApiPath() {
     // hide

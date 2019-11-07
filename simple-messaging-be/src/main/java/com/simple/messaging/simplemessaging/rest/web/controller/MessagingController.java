@@ -7,8 +7,10 @@ import com.simple.messaging.simplemessaging.rest.web.component.WebBeanMapper;
 import com.simple.messaging.simplemessaging.rest.web.component.WebMapper;
 import com.simple.messaging.simplemessaging.rest.web.constant.ApiPath;
 import com.simple.messaging.simplemessaging.service.api.MessagingService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,6 +38,18 @@ public class MessagingController {
   @PostMapping
   public Mono<BaseResponse<MessageData>> submit(@RequestBody MessageDataRequest messageData) {
     return Mono.defer(() -> messagingService.submitMessage(MAPPER.map(messageData))
+        .map(response -> BaseResponse.construct(
+            HttpStatus.OK.name(),
+            HttpStatus.OK.getReasonPhrase(),
+            response,
+            null
+        ))
+    ).subscribeOn(Schedulers.elastic());
+  }
+
+  @GetMapping(ApiPath.COLLECT)
+  public Mono<BaseResponse<List<MessageData>>> collect() {
+    return Mono.defer(() -> messagingService.collect()
         .map(response -> BaseResponse.construct(
             HttpStatus.OK.name(),
             HttpStatus.OK.getReasonPhrase(),
