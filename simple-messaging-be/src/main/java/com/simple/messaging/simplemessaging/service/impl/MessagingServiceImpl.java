@@ -20,7 +20,18 @@ public class MessagingServiceImpl implements MessagingService {
 
   @Override
   public Mono<MessageData> submitMessage(MessageData message) {
+    log.info("submit message data {}", message);
     return Mono.just(messageData.add(message))
         .map(r -> message);
+  }
+
+  @Override
+  public Mono<List<MessageData>> collect() {
+    return Mono.just(messageData)
+        .map(r -> {
+          List<MessageData> response = new ArrayList<>(r);
+          messageData = new ArrayList<>();
+          return response;
+        });
   }
 }

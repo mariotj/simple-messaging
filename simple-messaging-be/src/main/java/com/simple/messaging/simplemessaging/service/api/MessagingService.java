@@ -1,6 +1,7 @@
 package com.simple.messaging.simplemessaging.service.api;
 
 import com.simple.messaging.simplemessaging.entity.dao.MessageData;
+import java.util.List;
 import reactor.core.publisher.Mono;
 
 /**
@@ -10,4 +11,6 @@ import reactor.core.publisher.Mono;
 public interface MessagingService {
 
   Mono<MessageData> submitMessage(MessageData message);
+
+  Mono<List<MessageData>> collect();
 }

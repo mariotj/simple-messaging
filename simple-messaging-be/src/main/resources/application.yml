@@ -6,3 +6,11 @@ management:
   endpoints:
     web:
       base-path: /application
+
+spring:
+  application:
+    name: simple-messaging
+
+logging:
+  file:
+    path: logs/${spring.application.name}
