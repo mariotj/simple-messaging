@@ -32,7 +32,7 @@ There are 3 API in this project, 2 REST API and 1 Websocket endpoint.
   ```
   This endpoint must include request in body for the message like
   ```
-  { "message" : "your desire message}
+  { "message" : "your desire message"}
   ```
   Expected response
   ```
