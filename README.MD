@@ -82,3 +82,16 @@ There are 3 API in this project, 2 REST API and 1 Websocket endpoint.
    /topic/message
    ```
    Message that will be received only message that submit after subscription created.
+   
+   Expected response for this subscription
+   ```
+   {
+     "code": "OK",
+     "status": "OK",
+     "data": {
+       "message": "some message"
+     },
+     "error": null,
+     "time": "2019-11-07T04:09:03.938+0000"
+   }
+   ```
