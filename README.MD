@@ -77,6 +77,8 @@ There are 3 API in this project, 2 REST API and 1 Websocket endpoint.
    ```
    ws://{host}:{port}/message-ws
    ```
+   Example ```ws://localhost:8899/message-ws```
+   
    Create subscription for 
    ```
    /topic/message
