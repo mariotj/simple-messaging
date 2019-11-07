@@ -12,11 +12,12 @@ mvn -U clean install
 ```
 
 ## Run application
-Run java application with specific version
+Run java application with specific version from project directory
+```
+mvn spring-boot:run
+```
+
+Run java application with specific version from jar
 ```
 java -jar target/simple-messaging-<version>.jar
-```
-example: 
-```
-java -jar target/simple-messaging-0.0.1-SNAPSHOT.jar
 ```

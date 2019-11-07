@@ -68,7 +68,7 @@ public class WebSocketEndpointIT {
 
   @Test
   public void testSubscribeMessage() throws InterruptedException, ExecutionException, TimeoutException {
-    WebSocketStompClient stompClient = new WebSocketStompClient(new SockJsClient(createTransportClient()));
+    WebSocketStompClient stompClient = new WebSocketStompClient(new StandardWebSocketClient());
     stompClient.setMessageConverter(new MappingJackson2MessageConverter());
 
     StompSession stompSession = stompClient.connect(url, new StompSessionHandlerAdapter() {
